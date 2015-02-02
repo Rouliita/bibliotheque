@@ -14,4 +14,16 @@ class BookManager
         
         $book->insert();
     }
+    
+    public function getBookList ()
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=bibliotheque;charset=utf8', 'root', '');
+        $req = $bdd->query ("SELECT * FROM books");
+        while (($row = $req->fetch(PDO::FETCH_ASSOC))!== FALSE)
+        {
+            echo $row["id"]." " .$row["title"]."</br>"; 
+        }
+        
+        
+    }
 }
